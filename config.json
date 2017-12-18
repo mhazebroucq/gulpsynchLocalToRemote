@@ -1,0 +1,13 @@
+{
+    "fileMetadata": [
+        {            
+            "Titre": "Some title"
+        }
+    ],
+    "username": "jeff.angama",
+    "password": "",
+    "site": "http://localll/sites/Demo/",
+    "skipInstall": false,
+    "location": "style library/libTest",
+    "verbose": "true"
+}

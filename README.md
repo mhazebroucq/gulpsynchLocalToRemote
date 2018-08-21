@@ -1,4 +1,4 @@
-v1  - MAX / Jeff ANGAMA
+v1.1  - MAX / Jeff ANGAMA
 
 # Objective : 
 Push file to style library using gulp task. It allow to program to sharepoint and enjoy doing it from visual studio code productively, with a versioning such as git :)
@@ -38,7 +38,7 @@ src
         libTest
             example.js
 config.json
-gulp.js 
+gulpfile.js 
 settings.js
 ```
 

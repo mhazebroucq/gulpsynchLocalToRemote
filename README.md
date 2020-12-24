@@ -45,7 +45,7 @@ This file is outside of the solution folder to avoid to upload it to git.
 ```javascript
 module.exports = {
     dev: {        
-    "username": "user@domin.com",
+    "username": "user@domain.com",
     "password": "password"
     }
 }.dev;
@@ -59,13 +59,13 @@ Configure config.json
     "verbose": "false",
     "config":"Dev",
     "remoteFoldersToGet":["SiteAssets","_catalogs/masterpage"], //folders for which you want to retrieve content in the populate task
-    "location":"src" //location where files must be downloaded and watched
+    "location":"src" //location where files will be downloaded, uploaded and watched
 ```
 This file allows you to configure many profiles and select the one you want to activate by exporting the wanted config name.
 
 # Usage
 
-* A) Push to files to style library immediately. It will need a confirm and the it will create the folder by it self.
+* A) Push tthe files to SharePoint immediately. It will need a confirm and then it will create the folder by it self.
 
 ```bash
 gulp 
@@ -73,7 +73,7 @@ gulp
 
 or 
 
-* B) Watch changes and push to style library
+* B) Watch changes and push to SharePoint corresponding folder.
 ```bash
 gulp watch
 ```

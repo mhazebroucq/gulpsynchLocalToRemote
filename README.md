@@ -25,7 +25,7 @@ Open package.json, after description, add "," then paste
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-plumber": "^1.1.0",
-    "sp2013sync": "^1.0.3"
+    "sp2013sync": "^1.0.5"
 }
 ```
 
@@ -40,7 +40,7 @@ Copy the files config.js, gulpfile.js and settings.js into your solution folder.
 
 ## Step 6
 Create a creds.js file int the folder parent of your solution folder .
-This file is outside of the solution folder to avoir to upload it to git.
+This file is outside of the solution folder to avoid to upload it to git.
 
 ```javascript
 module.exports = {

@@ -1,12 +1,14 @@
 'use strict';
 
 var gulp = require('gulp'),
-    // ts = require('gulp-typescript'),
-    plumber = require("gulp-plumber"),
-    sp = require('gulp-spsync-creds'),
-    clean = require('gulp-clean'),    
-    settings = require('./settings');
+// ts = require('gulp-typescript'),
+plumber = require("gulp-plumber"),
+sp = require('gulp-spsync-creds'),
+confirm = require('gulp-confirm'),
+clean = require('gulp-clean'),    
+settings = require('./settings');
 
+var gutil = require("gulp-util");
 var onError = function (err) {
     this.emit("end");
 };
@@ -31,7 +33,10 @@ var folder = './src/**/*.*';
     Default task: uploads all the files to SharePoint, from folder SRC to SP Style library (configured in config.json)
  */
 gulp.task('default', function () {
-    return gulp.src(folder).pipe(
+    return gulp.src(folder).pipe(confirm({
+        question: 'You\'re about to upload elements to '+settings.get().site + '. Are you sure ? (y/n)',
+        input: '_key:y'
+    })).pipe(
         sp.sync(settings.get())
     );
 });
@@ -74,7 +79,10 @@ gulp.task('publish', function () {
     //Check-in the files
     crntSettings["publish"] = true;
 
-    return gulp.src(folder)
+    return gulp.src(folder).pipe(confirm({
+        question: 'You\'re about to upload elements to '+settings.get().site + '. Are you sure ? (y/n)',
+        input: '_key:y'
+    }))
         .pipe(sp.sync(crntSettings));
 });
 
@@ -82,7 +90,21 @@ gulp.task('publish', function () {
     download task: download the files for the specified folder
     This will download all files from SharePoint "config.location" into your destination local folder
  */
-// gulp.task('download', function () {
-//     var crntSettings = settings.download();
-//     return sp.download(crntSettings).pipe(gulp.dest("dist/" + crntSettings.startFolder));
-// });
+gulp.task('download', function () {
+    var crntSettings = settings.download();
+    console.log(JSON.stringify(crntSettings));
+    return sp.download(crntSettings).pipe(gulp.dest("dist/" + crntSettings.startFolder));
+});
+
+/*
+    download task: download the files for the specified folder
+    This will download all files from SharePoint "config.location" into your destination local folder
+ */
+gulp.task('populate', function () {
+    var crntSettings = settings.populateLocalFolders();
+    crntSettings.remoteFoldersToGet.forEach(element => {
+        crntSettings.startFolder = element;
+        sp.download(crntSettings).pipe(gulp.dest(crntSettings.location+"/" + crntSettings.startFolder));
+    });
+    // return 
+});

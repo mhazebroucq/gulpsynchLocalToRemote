@@ -8,62 +8,58 @@ You can clone this repo or integrate the synch tools by getting the installation
 
 If you clone the repo, do not follow the below procedure :
 
-* Step 0
+## Step 0
 Install node.js :)
-https://nodejs.org/dist/v6.11.4/node-v6.11.4-x64.msi
 
-* Step 1
-```
-npm init
-```
-* Open package.json, after description, add "," then paste
-```
-"dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-plumber": "^1.1.0",
-    "gulp-spsync-creds": "^2.2.6"
-},
-```
+## Step 1
+Copy the files config.js, gulpfile.js and settings.js into your solution folder.
 
-* Install dependencies
-```
-npm install --save
-```
-* Copy the installation files from InstallationFiles folder to your solution, for info the package contains
+## Step 3
+Create a cred.js file int the folder parent of your solution folder .
+This file is outside of the solution folder to avoir to upload it to git.
 
-```   
-src
-    style library
-        libTest
-            example.js
-config.json
-gulpfile.js 
-settings.js
+```javascript
+module.exports = {
+    dev: {        
+    "username": "user@domin.com",
+    "password": "password"
+    }
+}.dev;
 ```
 
-* Configure config.json
-        * Inform your site url, credentials (without domain)
-        * specify location : style library/libtest (subfolder)
-        * publish the file or not ?
+## Step 4
+Configure config.json
+```javascript
+    "site": "http://test-site-url",
+    "skipInstall": false,
+    "verbose": "false",
+    "config":"Dev",
+    "remoteFoldersToGet":["SiteAssets","_catalogs/masterpage"], //folders for which you want to retrieve content in the populate task
+    "location":"src" //location where files must be downloaded and watched
+```
+This file allows you to configure many profiles and select the one you want to activate by exporting the wanted config name.
 
 # Usage
 
-* A) Push to files to style library immediately. It will create the folder by it self
-```
+* A) Push to files to style library immediately. It will need a confirm and the it will create the folder by it self.
+
+```javascript
 gulp 
 ```
 
 or 
 
 * B) Watch changes and push to style library
-```
+```javascript
 gulp watch
 ```
 
 * C) if you specified published : false in config.json, it wont get publish until you run
-```
+```javascript
 gulp publish
 ```
     
-    F5 in browser
+* D) If you want to retrieve all items from the folders defined in "remoteFoldersToGet" :
+```javascript
+gulp populate
+```

@@ -13,9 +13,28 @@ If you clone the repo, do not follow the below procedure :
 Install node.js :)
 
 ## Step 1
+
+npm init
+
+## Step 2
+Open package.json, after description, add "," then paste
+"dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-spsync-creds": "^2.2.6"
+},
+
+## Step 4
+Install dependencies
+```powershell
+npm install --save
+```
+
+## Step 5
 Copy the files config.js, gulpfile.js and settings.js into your solution folder.
 
-## Step 3
+## Step 6
 Create a cred.js file int the folder parent of your solution folder .
 This file is outside of the solution folder to avoir to upload it to git.
 
@@ -28,7 +47,7 @@ module.exports = {
 }.dev;
 ```
 
-## Step 4
+## Step 6
 Configure config.json
 ```javascript
     "site": "http://test-site-url",
@@ -64,3 +83,4 @@ gulp publish
 ```javascript
 gulp populate
 ```
+To allow usage of this task, you need to update the content of the file node_modules\gulp-spsync-creds\release\index.js with the content of the file gulp-spsync-creds-updated-index.js

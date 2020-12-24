@@ -1,5 +1,6 @@
-v1.1  - MAX / Jeff ANGAMA
-
+v1.2  - Maxime  
+Fork from https://github.com/jeffangama/gulpsynchLocalToRemote  
+   
 # Objective : 
 Push file to style library using gulp task. It allow to program to sharepoint and enjoy doing it from visual studio code productively, with a versioning such as git :)
 You can clone this repo or integrate the synch tools by getting the installation files in InstallationFiles folder. It is explains below how to install it.

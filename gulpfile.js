@@ -7,8 +7,8 @@ sp = require('gulp-spsync-creds'),
 confirm = require('gulp-confirm'),
 clean = require('gulp-clean'),
 settings = require('./settings');
-var processIfModified = require('gulp-process-if-modified');
-const debug = require('gulp-debug');
+var processIfModified = require('gulp-process-only-modified-files');
+//const debug = require('gulp-debug');
 
 
 var onError = function (err) {
@@ -38,8 +38,9 @@ gulp.task('default', function () {
     return gulp.src(folder).pipe(confirm({
         question: 'You\'re about to upload elements to '+settings.get().site + '. Are you sure ? (y/n)',
         input: '_key:y'
-    })).pipe(
-        sp.sync(settings.get())
+    }))
+    .pipe(processIfModified())
+    .pipe(sp.sync(settings.get())
     );
 });
 

@@ -5,14 +5,15 @@ Fork from https://github.com/jeffangama/gulpsynchLocalToRemote
 Work on SharePoint 2013 files in VSCode.  
 Using gulp task you can download, upload and watch files.  
 
-You can clone this repo or integrate the synch tools by getting the installation files in InstallationFiles folder. It is explains below how to install it.
+You can clone this repo or integrate the synch tools by getting the installation files in InstallationFiles folder.  
+It is explains below how to install it in an existing project.
 
 # Contents
 * [Installation](#Installation (if you want to install it in your existing project))
 * [Usage](#Usage)
 
 
-# Installation (if you want to install it in your existing project)
+# Installation 
 
 If you clone the repo, do not follow the below procedure :
 

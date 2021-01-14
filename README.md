@@ -25,6 +25,7 @@ Open package.json, after description, add "," then paste
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-plumber": "^1.1.0",
+    "gulp-process-only-modified-files": "^1.0.0",
     "sp2013sync": "^1.0.5"
 }
 ```

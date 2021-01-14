@@ -26,8 +26,10 @@ Open package.json, after description, add "," then paste
     "gulp-clean": "^0.3.2",
     "gulp-plumber": "^1.1.0",
     "gulp-process-only-modified-files": "^1.0.0",
+    "node-file-cache": "^1.0.2",
+    "gulp-spsync-creds": "^2.3.8",
     "sp2013sync": "^1.0.5"
-}
+  },
 ```
 
 ## Step 4

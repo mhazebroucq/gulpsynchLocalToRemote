@@ -68,25 +68,25 @@ This file allows you to configure many profiles and select the one you want to a
 
 # Usage
 
-* A) Push tthe files to SharePoint immediately. It will need a confirm and then it will create the folder by it self.
-
+* A) Push the files to SharePoint immediately. It will need a confirm and then it will create the folder by it self.  
+Only the updated files since last push will be pushed. If it is the first push, all files will be pushed.  
+ (if you change the option published to false in config.json, the default gulp task will not publish files)
 ```bash
 gulp 
 ```
-
-or 
-
-* B) Watch changes and push to SharePoint corresponding folder.
+* B) Watch changes and push immediately each file you update
 ```bash
 gulp watch
 ```
-
-* C) if you specified published : false in config.json, it wont get publish until you run
+* C) Same as A) with publish (if you change the option published to false in config.json, the default gulp task will not publish files)
 ```bash
 gulp publish
-```
-    
-* D) If you want to retrieve all items from the folders defined in "remoteFoldersToGet" :
+```    
+* D) Publish all files to SharePoint regardless of the modification dates
+```bash
+gulp publish-all
+```    
+* E) If you want to retrieve all items from the folders defined in "remoteFoldersToGet" :
 ```bash
 gulp populate
 ```

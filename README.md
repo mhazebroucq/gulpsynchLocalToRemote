@@ -7,6 +7,11 @@ Using gulp task you can download, upload and watch files.
 
 You can clone this repo or integrate the synch tools by getting the installation files in InstallationFiles folder. It is explains below how to install it.
 
+# Contents
+* [Installation](#Installation (if you want to install it in your existing project))
+* [Usage](#Usage)
+
+
 # Installation (if you want to install it in your existing project)
 
 If you clone the repo, do not follow the below procedure :

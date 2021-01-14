@@ -5,10 +5,12 @@ var gulp = require('gulp'),
 plumber = require("gulp-plumber"),
 sp = require('gulp-spsync-creds'),
 confirm = require('gulp-confirm'),
-clean = require('gulp-clean'),    
+clean = require('gulp-clean'),
 settings = require('./settings');
+var processIfModified = require('gulp-process-if-modified');
+const debug = require('gulp-debug');
 
-var gutil = require("gulp-util");
+
 var onError = function (err) {
     this.emit("end");
 };
@@ -72,20 +74,38 @@ gulp.task("watch", function () {
 /*
     publish task: uploads everything and publishes each file
  */
+gulp.task('publish-all', function () {
+    var crntSettings = settings.get();
+    // Update Metadat doesn't work, should be improved
+    //crntSettings["update_metadata"] = true;
+    //Check-in the files
+    crntSettings["publish"] = true;
+    return gulp.src(folder)
+        .pipe(confirm({
+            question: 'You\'re about to upload elements to '+settings.get().site + '. Are you sure ? (y/n)',
+            input: '_key:y'
+        })).pipe(debug({title: 'unicorn:'}));
+        // .pipe(sp.sync(crntSettings));
+});
+
+/*
+    publish task: uploads everything and publishes each file
+ */
 gulp.task('publish', function () {
     var crntSettings = settings.get();
     // Update Metadat doesn't work, should be improved
     //crntSettings["update_metadata"] = true;
     //Check-in the files
     crntSettings["publish"] = true;
-
-    return gulp.src(folder).pipe(confirm({
-        question: 'You\'re about to upload elements to '+settings.get().site + '. Are you sure ? (y/n)',
-        input: '_key:y'
-    }))
-        .pipe(sp.sync(crntSettings));
+    return gulp.src(folder)
+        .pipe(confirm({
+            question: 'You\'re about to upload elements to '+settings.get().site + '. Are you sure ? (y/n)',
+            input: '_key:y'
+        }))
+        .pipe(processIfModified())
+        .pipe(debug({title: 'unicorn:'}));
+        // .pipe(sp.sync(crntSettings));
 });
-
 /*
     download task: download the files for the specified folder
     This will download all files from SharePoint "config.location" into your destination local folder

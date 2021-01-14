@@ -84,8 +84,9 @@ gulp.task('publish-all', function () {
         .pipe(confirm({
             question: 'You\'re about to upload elements to '+settings.get().site + '. Are you sure ? (y/n)',
             input: '_key:y'
-        })).pipe(debug({title: 'unicorn:'}));
-        // .pipe(sp.sync(crntSettings));
+        }))
+        //.pipe(debug({title: 'unicorn:'}));
+        .pipe(sp.sync(crntSettings));
 });
 
 /*
@@ -103,8 +104,8 @@ gulp.task('publish', function () {
             input: '_key:y'
         }))
         .pipe(processIfModified())
-        .pipe(debug({title: 'unicorn:'}));
-        // .pipe(sp.sync(crntSettings));
+        //.pipe(debug({title: 'unicorn:'}));
+        .pipe(sp.sync(crntSettings));
 });
 /*
     download task: download the files for the specified folder

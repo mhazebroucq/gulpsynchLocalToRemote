@@ -32,7 +32,7 @@ var folder = './src/**/*.*';
 // });
 
 /*
-    Default task: uploads all the files to SharePoint, from folder SRC to SP Style library (configured in config.json)
+    Default task: uploads only updated files since last upload, from folder SRC to SP Style library (configured in config.json)
  */
 gulp.task('default', function () {
     return gulp.src(folder).pipe(confirm({
@@ -73,7 +73,7 @@ gulp.task("watch", function () {
 });
 
 /*
-    publish task: uploads everything and publishes each file
+    publish-all task: uploads everything and publishes each file
  */
 gulp.task('publish-all', function () {
     var crntSettings = settings.get();
@@ -91,7 +91,7 @@ gulp.task('publish-all', function () {
 });
 
 /*
-    publish task: uploads everything and publishes each file
+    publish task: uploads only updated files since last publish
  */
 gulp.task('publish', function () {
     var crntSettings = settings.get();

@@ -6,7 +6,7 @@ Work on SharePoint 2013 files in VSCode.
 Using gulp task you can download, upload and watch files.  
 
 You can clone this repo or integrate the synch tools by getting the installation files in InstallationFiles folder.  
-It is explains below how to install it in an existing project.
+You can install in into an existing project bu using procedure below.
 
 # Contents
 * [Installation](#Installation (if you want to install it in your existing project))
@@ -60,7 +60,7 @@ module.exports = {
 }.dev;
 ```
 
-## Step 6
+## Step 7
 Configure config.json
 ```javascript
     "site": "http://test-site-url",
